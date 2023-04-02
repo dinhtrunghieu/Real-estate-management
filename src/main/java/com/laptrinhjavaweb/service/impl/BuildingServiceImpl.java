@@ -75,13 +75,10 @@ public class BuildingServiceImpl implements IBuildingService {
             BuildingEntity foundBuilding = buildingRepository.findById(buildingId)
                     .orElseThrow(() -> new NotFoundException("Building not found!"));
             buildingEntity.setImage(foundBuilding.getImage());
+        } else {
             long millis = System.currentTimeMillis();
-            java.util.Date now = new Date(millis);
-            SimpleDateFormat dinhDang = new SimpleDateFormat("dd/MM/yyyy");
-            if (now != null) {
-                String date = dinhDang.format(now);
-                buildingEntity.setCreatedDate((java.sql.Date) now);
-            }
+            Date now = new Date(millis);
+            buildingEntity.setCreatedDate(now);
             MyUserDetail user = SecurityUtils.getPrincipal();
             buildingEntity.setCreatedBy(user.getFullName());
         }

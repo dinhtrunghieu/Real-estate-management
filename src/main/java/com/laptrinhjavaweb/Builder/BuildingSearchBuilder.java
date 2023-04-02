@@ -101,6 +101,8 @@ public class BuildingSearchBuilder {
         this.floorArea = builder.floorArea;
         this.managerName = builder.managerName;
         this.managerPhone = builder.managerPhone;
+        this.direction = builder.direction;
+        this.level = builder.level;
 
     }
 

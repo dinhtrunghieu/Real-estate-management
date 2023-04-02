@@ -201,11 +201,11 @@
             contentType: "application/json;",
             data: JSON.stringify(data),
             success: function (response) {
-                alert(response.message);
+                alert("Tạo thành công");
                 window.location.href = "<c:url value= '/admin/customer-edit-${customerId}'/>";
             },
             error: function (response) {
-                alert(response.message);
+                alert("Tạo thất bại");
                 window.location.href = "<c:url value= '/admin/customer-edit-${customerId}'/>";
             }
         });
@@ -239,12 +239,12 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (res) {
-                alert(res.message);
+                alert("Thêm thành công");
                 window.location.href = "<c:url value= '/admin/customer-edit'/>";
 
             },
             error: function (res) {
-                alert(res.message);
+                alert("Thêm thất bại");
                 window.location.href = "<c:url value= '/admin/customer-edit'/>";
 
             }
@@ -258,7 +258,7 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (res) {
-                alert(response.message);
+                alert("Cập nhật thành công");
                 window.location.href = "<c:url value= '/admin/customer-edit-${customerId}'/>";
             },
             error: function (res) {

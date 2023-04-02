@@ -33,7 +33,7 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
 
         normalQuery(value, whereQuery);
         specialQuery(value, whereQuery,joinQuery);
-        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery).append(" GROUP BY c.id")
+        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery)
                 .append(" LIMIT ").append(pageable.getPageSize()).append("\n")
                 .append(" OFFSET ").append(pageable.getOffset());
         ;
@@ -49,7 +49,7 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
         StringBuilder whereQuery = new StringBuilder();
         normalQuery(value, whereQuery);
         specialQuery(value, whereQuery, joinQuery);
-        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery).append(" GROUP BY c.id");
+        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery);
         Query query = entityManager.createNativeQuery(finalQuery.toString(), CustomerEnitity.class);
         return query.getResultList().size();
     }

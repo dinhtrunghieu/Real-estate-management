@@ -38,13 +38,12 @@ public class BuildingRepositoryCustomImpl implements BuildingRepositoryCustom {
 
     @Override
     public List<BuildingEntity> findBuilding(BuildingSearchBuilder builder, Pageable pageable) {
-        String typeCode = buildingSpecialUtils.convertTypeToString(builder.getType());
         StringBuilder finalQuery = new StringBuilder("SELECT * From building as b ");
         StringBuilder joinQuery = new StringBuilder();
         StringBuilder whereQuery = new StringBuilder();
         buildSpecialQueryUsingBuilder(builder, whereQuery, joinQuery);
         buildNormalQueryUsingBuilder(builder, whereQuery);
-        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery).append(" GROUP BY b.id")
+        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery)
                 .append(" LIMIT ").append(pageable.getPageSize()).append("\n")
                 .append(" OFFSET ").append(pageable.getOffset());
         ;
@@ -60,7 +59,7 @@ public class BuildingRepositoryCustomImpl implements BuildingRepositoryCustom {
         StringBuilder whereQuery = new StringBuilder();
         buildSpecialQueryUsingBuilder(builder, whereQuery, joinQuery);
         buildNormalQueryUsingBuilder(builder, whereQuery);
-        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery).append(" GROUP BY b.id");
+        finalQuery.append(joinQuery).append(" WHERE 1 = 1").append(whereQuery);
         Query query = entityManager.createNativeQuery(finalQuery.toString(), BuildingEntity.class);
         return query.getResultList().size();
 
