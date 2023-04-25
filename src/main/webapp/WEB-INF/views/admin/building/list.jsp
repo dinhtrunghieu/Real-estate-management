@@ -233,7 +233,6 @@
                             <display:column headerClass="text-left" property="managerName" title="Tên quản lý"/>
                             <display:column headerClass="text-left" property="managerPhone" title="SDT Quản lý"/>
                             <display:column headerClass="text-left" property="floorArea" title="Diện tích sàn"/>
-                            <display:column headerClass="text-left" property="describeArea" title="Diện tích trống"/>
                             <display:column headerClass="text-left" property="serviceFee" title="Phí dịch vụ"/>
                             <display:column headerClass="text-left" property="brokerageFee" title="Phí dịch môi giới"/>
                             <display:column headerClass="col-actions" title="Thao tác">

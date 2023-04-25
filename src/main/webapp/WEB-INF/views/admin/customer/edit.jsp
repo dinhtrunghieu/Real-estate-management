@@ -239,6 +239,7 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (res) {
+                res.mes
                 alert("Thêm thành công");
                 window.location.href = "<c:url value= '/admin/customer-edit'/>";
 

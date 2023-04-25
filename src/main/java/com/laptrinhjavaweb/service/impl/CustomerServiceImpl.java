@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +38,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public List<CustomerResponse> findCustomer(List<String> role, Long staffId, CustomerSearchRequest value, PageRequest pageable) {
-        if (!role.contains("ROLE_MANAGER")){
+        if (!role.contains("ROLE_MANAGER")) {
             value.setStaffId(staffId);
         }
         List<CustomerEnitity> customerEnitity = customerRepository.findCustomer(value, pageable);
@@ -50,7 +53,7 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public ResponseDTO assignmentBuilding(AssignmentDTO value, List<String> role ) {
+    public ResponseDTO assignmentBuilding(AssignmentDTO value, List<String> role) {
         ResponseDTO responseDTO = new ResponseDTO();
         if (role.contains("ROLE_MANAGER")) {
             List<UserEntity> staffToAdd = userRepository.findByIdIn(value.getStaffIds());
@@ -75,35 +78,36 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Transactional
     @Override
-    public ResponseDTO updateAndSaveBuilding(CustomerDTO value, List<String> role ) {
+    public ResponseDTO updateAndSaveBuilding(CustomerDTO value, List<String> role) {
         ResponseDTO responseDTO = new ResponseDTO();
-        if (role.contains("ROLE_MANAGER")){
-            if (value.getId() != null){
-                CustomerEnitity customerEnitity = customerConverter.convertToCustomerEntity(value);
-                CustomerEnitity customerCurrent = customerRepository.findById(customerEnitity.getId()).get();
-                List<UserEntity> userEntities = customerCurrent.getUsers();
-                List<TransactionEntity> transactionEntities = customerCurrent.getTransaction();
-                customerEnitity.setTransaction(transactionEntities);
-                customerEnitity.setUsers(userEntities);
-                customerRepository.save(customerEnitity);
-                responseDTO.setMessage("Update thông tin khách hàng thành công !");
-            } else {
-                CustomerEnitity customerEnitity = customerConverter.convertToCustomerEntity(value);
-                long millis = System.currentTimeMillis();
-                customerRepository.save(customerEnitity);
-                responseDTO.setMessage("Tạo thông tin khách hàng thành công !");
-            }
+        MyUserDetail user = SecurityUtils.getPrincipal();
+        LocalDate today = LocalDate.now();
+        if (value.getId() != null) {
+            CustomerEnitity customerEnitity = customerConverter.convertToCustomerEntity(value);
+            CustomerEnitity customerCurrent = customerRepository.findById(customerEnitity.getId()).get();
+            List<UserEntity> userEntities = customerCurrent.getUsers();
+            List<TransactionEntity> transactionEntities = customerCurrent.getTransaction();
+            customerEnitity.setTransaction(transactionEntities);
+            customerEnitity.setUsers(userEntities);
+            customerRepository.save(customerEnitity);
+            responseDTO.setMessage("Update thông tin khách hàng thành công !");
         } else {
-            responseDTO.setMessage("Không thể thao tác vì bạn không phải là quản lý .. ");
+            CustomerEnitity customerEnitity = customerConverter.convertToCustomerEntity(value);
+            Date date = java.sql.Date.valueOf(today);
+            customerEnitity.setCreatedDate(date);
+            customerEnitity.setCreatedBy(user.getFullName());
+            long millis = System.currentTimeMillis();
+            customerRepository.save(customerEnitity);
+            responseDTO.setMessage("Tạo thông tin khách hàng thành công !");
         }
         return responseDTO;
-    }
+}
 
     @Transactional
     @Override
-    public ResponseDTO deleteCustomer(DeleteDTO value, List<String> role ) {
+    public ResponseDTO deleteCustomer(DeleteDTO value, List<String> role) {
         ResponseDTO responseDTO = new ResponseDTO();
-        if (role.contains("ROLE_MANAGER")){
+        if (role.contains("ROLE_MANAGER")) {
             customerRepository.deleteByIdIn(value.getId());
             responseDTO.setMessage("Xóa thành công !");
         } else {
@@ -113,7 +117,7 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public List<CustomerEnitity> findById(Long idCustomer,  TransactionEntity value) {
+    public List<CustomerEnitity> findById(Long idCustomer, TransactionEntity value) {
         List<CustomerEnitity> result = new ArrayList<>();
         List<TransactionEntity> transactionEntity = new ArrayList<>();
         transactionEntity.add(value);
