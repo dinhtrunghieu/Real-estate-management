@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
--- Host: 103.75.187.208    Database: estateadvance
+-- Host: 127.0.0.1    Database: estateadvance
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -67,7 +67,7 @@ CREATE TABLE `assignmentcustomer` (
   KEY `fk_customer_user` (`customerid`),
   CONSTRAINT `fk_customer_user` FOREIGN KEY (`customerid`) REFERENCES `customer` (`id`),
   CONSTRAINT `fk_user_customer` FOREIGN KEY (`staffid`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `assignmentcustomer` (
 
 LOCK TABLES `assignmentcustomer` WRITE;
 /*!40000 ALTER TABLE `assignmentcustomer` DISABLE KEYS */;
-INSERT INTO `assignmentcustomer` VALUES (35,2,9,NULL,NULL,NULL,NULL),(36,4,10,NULL,NULL,NULL,NULL),(37,3,11,NULL,NULL,NULL,NULL),(38,4,11,NULL,NULL,NULL,NULL),(39,2,12,NULL,NULL,NULL,NULL),(40,4,12,NULL,NULL,NULL,NULL),(41,2,13,NULL,NULL,NULL,NULL),(42,3,14,NULL,NULL,NULL,NULL),(43,4,14,NULL,NULL,NULL,NULL),(44,2,15,NULL,NULL,NULL,NULL),(45,3,16,NULL,NULL,NULL,NULL),(46,4,16,NULL,NULL,NULL,NULL),(47,2,17,NULL,NULL,NULL,NULL),(48,4,18,NULL,NULL,NULL,NULL),(49,2,19,NULL,NULL,NULL,NULL),(50,2,21,NULL,NULL,NULL,NULL),(51,4,21,NULL,NULL,NULL,NULL),(52,3,20,NULL,NULL,NULL,NULL);
+INSERT INTO `assignmentcustomer` VALUES (35,2,9,NULL,NULL,NULL,NULL),(36,4,10,NULL,NULL,NULL,NULL),(37,3,11,NULL,NULL,NULL,NULL),(38,4,11,NULL,NULL,NULL,NULL),(39,2,12,NULL,NULL,NULL,NULL),(40,4,12,NULL,NULL,NULL,NULL),(41,2,13,NULL,NULL,NULL,NULL),(42,3,14,NULL,NULL,NULL,NULL),(43,4,14,NULL,NULL,NULL,NULL),(44,2,15,NULL,NULL,NULL,NULL),(45,3,16,NULL,NULL,NULL,NULL),(46,4,16,NULL,NULL,NULL,NULL),(47,2,17,NULL,NULL,NULL,NULL),(48,4,18,NULL,NULL,NULL,NULL),(49,2,19,NULL,NULL,NULL,NULL),(50,2,21,NULL,NULL,NULL,NULL),(51,4,21,NULL,NULL,NULL,NULL),(52,3,20,NULL,NULL,NULL,NULL),(53,2,30,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `assignmentcustomer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +158,7 @@ CREATE TABLE `customer` (
   `companyname` varchar(255) DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,7 +167,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (9,'Đinh Trung Hiếu','327821824','hieu@gmail.com',NULL,NULL,NULL,NULL,'Cần 1 căn phòng 105m2',NULL,'ABZ Company',NULL),(10,'Đinh Thị Như Ý','255247652','nhuy@gmail.com',NULL,NULL,NULL,NULL,'Cần một căn hộ cao cấp',NULL,'ZAM@gmail.com',NULL),(11,'Phan Nguyễn','355662142','nguyen2@gmail.com',NULL,NULL,NULL,NULL,'Tìm một tòa nhà full nội thất sang trọng',NULL,'AFT ',NULL),(12,'Nguyễn Nhất Trường','326462752','nhattruong@gmail.com',NULL,NULL,NULL,NULL,'Cần một tòa nhà làm văn phòng',NULL,'AWT Company','chi phí dưới 15 triệu'),(13,'Trần Ngọc Khánh','357882132','ngocckhanhz@gmail.com',NULL,NULL,NULL,NULL,'Cần một căn chung cư 3 phòng ngủ',NULL,'ACB','chi phí dưới 10 triệu'),(14,'Trần Ngọc Thiện','333753813','thien@gmail.com',NULL,NULL,NULL,NULL,'nhà nguyên căn',NULL,'abc@gmail.com','giá dưới 5 triệu'),(15,'Nguyễn Hoàng Anh Tuấn','995662132','hoanganh@gmail.com',NULL,NULL,NULL,NULL,'cần một tòa nhà 3 tầng',NULL,'HA ACB','giá dưới 10 triệu'),(16,'Đinh Hà Anh Tuấn ','968742352','tuananh@gmail.com',NULL,NULL,NULL,NULL,'Nhà một tầng',NULL,'Azz WTW','gần trung tâm'),(17,'Nguyễn Văn Sang','377689689','sangnguyen@gmail.com',NULL,NULL,NULL,NULL,'Văn phòng công ty',NULL,'Công ty TNHH Sang Nguyễn','Dưới 20 triệu/ tháng'),(18,'Hoàng Anh Vũ','355662132','aratadz.h2r@gmail.com',NULL,NULL,NULL,NULL,'Nhà nguyên căn có nội thất',NULL,'03289219823','dưới 7 triệu'),(19,'Hồ Anh Tài','379132132','aratadz.h2r@gmail.com',NULL,NULL,NULL,NULL,'cần nhà nguyên căn 4 tầng có hầm',NULL,'Công ty TNHH công nghệ HAT','dưới 15 triệu/ tháng'),(20,'Hoàng Nguyễn Anh Tú',NULL,NULL,NULL,NULL,NULL,NULL,'nhà nguyên căn full nội thất',NULL,'Anh Tú Company','gần chợ, trường học'),(21,'Hoàng Văn Khách','132132423','Khach@gmail.com',NULL,NULL,NULL,NULL,'kho',NULL,'khachnguyen@gmail.com','tầm 100m2');
+INSERT INTO `customer` VALUES (9,'Đinh Trung Hiếu','327821824','hieu@gmail.com','2023-04-13 00:00:00',NULL,'Nguyễn Văn A',NULL,'Cần 1 căn phòng 105m2','VIP','ABZ Company',NULL),(10,'Đinh Thị Như Ý','255247652','nhuy@gmail.com','2023-04-22 00:00:00',NULL,'Nguyễn Văn D',NULL,'Cần một căn hộ cao cấp','VIP','ZAM@gmail.com',NULL),(11,'Phan Nguyễn','355662142','nguyen2@gmail.com','2023-04-11 00:00:00',NULL,'Nguyễn Văn B',NULL,'Tìm một tòa nhà full nội thất sang trọng','VIP','AFT ',NULL),(12,'Nguyễn Nhất Trường','326462752','nhattruong@gmail.com','2023-04-10 00:00:00',NULL,'Nguyễn Văn A',NULL,'Cần một tòa nhà làm văn phòng','VIP','AWT Company','chi phí dưới 15 triệu'),(13,'Trần Ngọc Khánh','357882132','ngocckhanhz@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn C',NULL,'Cần một căn chung cư 3 phòng ngủ','VIP','ACB','chi phí dưới 10 triệu'),(14,'Trần Ngọc Thiện','333753813','thien@gmail.com','2023-04-01 00:00:00',NULL,'Nguyễn Văn B',NULL,'nhà nguyên căn','VIP','abc@gmail.com','giá dưới 5 triệu'),(15,'Nguyễn Hoàng Anh Tuấn','995662132','hoanganh@gmail.com','2023-04-06 00:00:00',NULL,'Nguyễn Văn B',NULL,'cần một tòa nhà 3 tầng','VIP','HA ACB','giá dưới 10 triệu'),(16,'Đinh Hà Anh Tuấn ','968742352','tuananh@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn A',NULL,'Nhà một tầng','VIP','Azz WTW','gần trung tâm'),(17,'Nguyễn Văn Sang','377689689','sangnguyen@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn C',NULL,'Văn phòng công ty','VIP','Công ty TNHH Sang Nguyễn','Dưới 20 triệu/ tháng'),(18,'Hoàng Anh Vũ','355662132','aratadz.h2r@gmail.com','2023-04-07 00:00:00',NULL,'Nguyễn Văn D',NULL,'Nhà nguyên căn có nội thất','VIP','03289219823','dưới 7 triệu'),(19,'Hồ Anh Tài','379132132','aratadz.h2r@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn D',NULL,'cần nhà nguyên căn 4 tầng có hầm','VIP','Công ty TNHH công nghệ HAT','dưới 15 triệu/ tháng'),(20,'Hoàng Nguyễn Anh Tú','328823123','h2@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn C',NULL,'nhà nguyên căn full nội thất','VIP','Anh Tú Company','gần chợ, trường học'),(21,'Hoàng Văn Khách','132132423','Khach@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn B',NULL,'kho','VIP','khachnguyen@gmail.com','tầm 100m2'),(30,'Đinh Trung Hiếu','327821824','aratadz.h2r@gmail.com','2023-04-25 00:00:00',NULL,'Nguyễn Văn A',NULL,'cần một tòa nhà 155m2',NULL,'IT Company','K.O');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +349,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'nguyenvana','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','nguyen van a',NULL,NULL,1,NULL,NULL,NULL,NULL),(2,'nguyenvanb','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','nguyen van b',NULL,NULL,1,NULL,NULL,NULL,NULL),(3,'nguyenvanc','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','nguyen van c',NULL,NULL,1,NULL,NULL,NULL,NULL),(4,'nguyenvand','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','nguyen van d',NULL,NULL,1,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'nguyenvana','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Nguyễn Văn A',NULL,NULL,1,NULL,NULL,NULL,NULL),(2,'nguyenvanb','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Nguyễn Văn B',NULL,NULL,1,NULL,NULL,NULL,NULL),(3,'nguyenvanc','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Nguyễn Văn C',NULL,NULL,1,NULL,NULL,NULL,NULL),(4,'nguyenvand','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Nguyễn Văn D',NULL,NULL,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -362,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-25 12:56:12
+-- Dump completed on 2023-04-25 17:52:04
